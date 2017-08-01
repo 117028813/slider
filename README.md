@@ -2,11 +2,11 @@
 
 ### 参数
 
-`slider`: 必须，滑动元素的容器，是 DOM 对象
+`slider`: 必须，type: DOMObject，滑动元素的容器
 
-`height`: 可选，容器的高度，默认是 100%
+`height`: 可选，type: String，容器的高度，默认是 100%
 
-`backgroundColor`: 可选，容器的背景色，默认是 `#333`
+`backgroundColor`: 可选，type: String，容器的背景色，默认是 `#333`
 
 
 example 1:
