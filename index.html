@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+  <title>Slider</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    html {
+      height: 100%;
+    }
+    body {
+      height: 100%;
+    }
+    body > div {
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="slider">
+  <div class="slider-item"><img src="./imgs/1.jpg"></div>
+  <div class="slider-item"><img src="./imgs/2.jpg"></div>
+  <div class="slider-item"><img src="./imgs/3.jpg"></div>
+  <div class="slider-item"><img src="./imgs/4.jpg"></div>
+  <div class="slider-item"><img src="./imgs/5.jpg"></div>
+  <div class="slider-item"><img src="./imgs/6.jpg"></div>
+  <div class="slider-item"><img src="./imgs/7.jpg"></div>
+  <div class="slider-item"><img src="./imgs/8.jpg"></div>
+</div>
+
+<div class="slider2">
+  <div class="slider-item" style="background:red;">1</div>
+  <div class="slider-item" style="background:green;">2</div>
+  <div class="slider-item" style="background:blue;">3</div>
+</div>  
+
+<div class="slider3">
+  <div class="slider-item" style="background:url('./imgs/1.jpg') center/contain no-repeat"></div>
+  <div class="slider-item" style="background:url('./imgs/2.jpg') center/contain no-repeat"></div>
+  <div class="slider-item" style="background:url('./imgs/3.jpg') center/contain no-repeat"></div>
+</div> 
+
+<script src="./slider.js"></script>
+<script>
+new Slider({
+  slider: document.querySelector('.slider'),
+  height: '150px',
+  backgroundColor: '#ccc'
+})
+
+new Slider({
+  slider: document.querySelector('.slider2'),
+  height: '150px'
+})
+
+new Slider({
+  slider: document.querySelector('.slider3'),
+  height: '150px'
+})
+</script>
+</body>
+</html>
