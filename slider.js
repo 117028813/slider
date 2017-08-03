@@ -45,6 +45,9 @@ Slider.prototype.bindEvent = function () {
 
   self.slider.addEventListener('touchstart', function (e) {
     self.pageStart = e.targetTouches[0].pageX // 获取开始触摸的位置
+    self.touchStart = new Date() * 1 // 记录手指按下的时间戳
+    // 当触摸没有滑动的时候将滑动距离重置为0
+    self.offsetX = 0
   })
 
   self.slider.addEventListener('touchmove', function (e) {
@@ -65,12 +68,25 @@ Slider.prototype.bindEvent = function () {
 
   // 手指离开时根据滑动距离是否大于二分之一的屏幕宽决定留在当前页还是跳到下一页或上一页
   self.slider.addEventListener('touchend', function (e) {
-    if (self.offsetX > window.innerWidth / 2) {
-      self.goIndex(-1)
-    } else if (self.offsetX < 0 && self.offsetX < -(window.innerWidth / 2)) {
-      self.goIndex(1)
+    self.touchEnd = new Date() * 1 // 记录手指离开的时间戳
+    // 手指滑动时间超过300ms后，需要滑动一般屏幕宽度才会切换到下一页
+    // 手指滑动时间不到300ms,只要滑动距离超过50px就会切换到下一页
+    if (self.touchEnd - self.touchStart > 300) {
+      if (self.offsetX > window.innerWidth / 2) {
+        self.goIndex(-1)
+      } else if (self.offsetX < 0 && self.offsetX < -(window.innerWidth / 2)) {
+        self.goIndex(1)
+      } else {
+        self.goIndex(0)
+      }
     } else {
-      self.goIndex(0)
+      if (self.offsetX > 50) {
+        self.goIndex(-1)
+      } else if (self.offsetX < -50) {
+        self.goIndex(1)
+      } else {
+        self.goIndex(0)
+      }
     }
   })
 }
